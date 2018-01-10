@@ -1,0 +1,29 @@
+#!/bin/bash
+
+THIS_SCRIPT=${BASH_SOURCE}
+THIS_PATH=`readlink -e ${THIS_SCRIPT}`
+
+export DEPLOYED_ROOT=`dirname ${THIS_PATH}`/usr/local
+export PATH=${DEPLOYED_ROOT}/bin:${PATH}
+export LD_LIBRARY_PATH=${DEPLOYED_ROOT}/lib:${LD_LIBRARY_PATH}
+
+help() {
+	echo "	You likely wanted to source this script to configure your environment:"
+	echo "		. ${THIS_SCRIPT}"
+	echo "	Or you wanted to run something in the provided environment:"
+	echo "		${THIS_SCRIPT} <executable-and-arguments>"
+}
+
+error() {
+	echo "error: $1" >&2
+	help >&2
+}
+
+if [ "${BASH_SOURCE}" != "$0" ]; then
+	echo "environment configured: ${DEPLOYED_ROOT}"
+elif [ -z "$*" ]; then
+	error "nothing to do"
+else
+	$*
+fi
+
