@@ -12,7 +12,7 @@ PKG_SOURCE_DIR:=\
   $(abspath .)
 
 PKG_NAME:=\
-  template
+  $(notdir $(abspath .))
 
 PACKAGE_DEPS:=\
   googletest \
@@ -23,3 +23,7 @@ include $(INCLUDE_DIR)/package/cmake.mk
 include $(INCLUDE_DIR)/coverage.mk
 
 .PHONY: compile.done
+
+.PHONY: check-stimulus
+check-stimulus: all
+	@$(STAGING_DIR)/set-env $(BUILD_DIR)/$(PKG_NAME)/algorithm < stimulus.txt

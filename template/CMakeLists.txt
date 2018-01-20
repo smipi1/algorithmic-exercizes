@@ -56,3 +56,16 @@ install(
     DESTINATION
         lib
 )
+
+add_executable(
+    ${NAME}
+
+    src/${NAME}.cpp
+)
+
+install(
+    TARGETS
+        ${NAME}
+    DESTINATION
+        bin
+)
