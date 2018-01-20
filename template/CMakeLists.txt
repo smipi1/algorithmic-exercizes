@@ -42,30 +42,40 @@ if(SIZEOF_OFF_T GREATER 7)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FILE_OFFSET_BITS=64")
 endif()
 
-add_subdirectory(test)
+if("$ENV{PKG_TYPE}" STREQUAL "library")
 
-add_library(
-    lib${NAME}
+    add_subdirectory(test)
 
-    src/${NAME}.cpp
-)
-
-install(
-    TARGETS
+    add_library(
         lib${NAME}
-    DESTINATION
-        lib
-)
+    
+        src/${NAME}.cpp
+    )
+    
+    install(
+        TARGETS
+            lib${NAME}
+        DESTINATION
+            lib
+    )
 
-add_executable(
-    ${NAME}
+elseif("$ENV{PKG_TYPE}" STREQUAL "executable")
 
-    src/${NAME}.cpp
-)
-
-install(
-    TARGETS
+    add_executable(
         ${NAME}
-    DESTINATION
-        bin
-)
+    
+        src/${NAME}.cpp
+    )
+    
+    install(
+        TARGETS
+            ${NAME}
+        DESTINATION
+            bin
+    )
+
+else()
+
+    message(FATAL_ERROR "PKG_TYPE not in (executable|library)")
+
+endif()

@@ -17,6 +17,11 @@ PKG_NAME:=\
 PACKAGE_DEPS:=\
   googletest \
 
+export PKG_TYPE:=\
+  library
+#export PKG_TYPE:=\
+#  executable
+
 include $(INCLUDE_DIR)/utils.mk
 include $(INCLUDE_DIR)/packageDeps.mk
 include $(INCLUDE_DIR)/package/cmake.mk
