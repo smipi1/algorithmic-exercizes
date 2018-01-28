@@ -24,6 +24,16 @@ include $(INCLUDE_DIR)/coverage.mk
 
 .PHONY: compile.done
 
+INPUT_FILES:= \
+  data.in
+
+OUTPUT_FILES:=\
+  $(patsubst %.in,%.out,$(INPUT_FILES))
+
 .PHONY: check-stimulus
-check-stimulus: all
-	@$(STAGING_DIR)/set-env $(BUILD_DIR)/$(PKG_NAME)/example <input_file.txt | tee output_file.txt
+check-stimulus: $(OUTPUT_FILES)
+
+.SECONDEXPANSION:
+.PHONY: %.out
+%.out: $$*.in all
+	$(STAGING_DIR)/set-env $(BUILD_DIR)/$(PKG_NAME)/example <$< | tee $@
