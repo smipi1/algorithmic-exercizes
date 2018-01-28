@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "algorithm.h"
+#include "example.h"
 
 class test_Api: public testing::Test {
 protected:
@@ -21,7 +21,7 @@ protected:
     }
 };
 
-TEST_F(test_Api, algorithm_returns_0)
+TEST_F(test_Api, example_returns_0)
 {
-    ASSERT_EQ(algorithm(), 0);
+    ASSERT_EQ(example(), 0);
 }

@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.9)
 
-set(NAME algorithm)
+set(NAME example)
 
 project (${NAME})
 
@@ -47,7 +47,7 @@ add_subdirectory(test)
 add_library(
     lib${NAME}
 
-    src/algorithm.cpp
+    src/example.cpp
 )
 
 install(

@@ -1,4 +1,4 @@
-set(DUT "algorithm")
+set(DUT "example")
 set(unittest ${DUT}.unittest) 
 
 include_directories(

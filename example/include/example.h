@@ -1,6 +1,6 @@
 #ifndef TEMPLATE_ALGORITHM_H_
 #define TEMPLATE_ALGORITHM_H_
 
-int algorithm(void);
+int example(void);
 
 #endif /* TEMPLATE_ALGORITHM_H_ */
