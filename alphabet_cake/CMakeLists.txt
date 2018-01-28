@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.9)
 
-set(NAME algorithm)
+set(NAME alphabet_cake)
 
 project (${NAME})
 
@@ -42,10 +42,12 @@ if(SIZEOF_OFF_T GREATER 7)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_FILE_OFFSET_BITS=64")
 endif()
 
+add_subdirectory(test)
+
 add_library(
     lib${NAME}
 
-    src/${NAME}.cpp
+    src/alphabet_cake.cpp
 )
 
 install(
@@ -58,7 +60,13 @@ install(
 add_executable(
     ${NAME}
 
-    src/${NAME}.cpp
+    src/main.cpp
+)
+
+target_link_libraries(
+    ${NAME}
+
+    lib${NAME}
 )
 
 install(

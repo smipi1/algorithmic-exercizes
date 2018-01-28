@@ -26,4 +26,4 @@ include $(INCLUDE_DIR)/coverage.mk
 
 .PHONY: check-stimulus
 check-stimulus: all
-	@$(STAGING_DIR)/set-env $(BUILD_DIR)/$(PKG_NAME)/algorithm < stimulus.txt
+	@$(STAGING_DIR)/set-env $(BUILD_DIR)/$(PKG_NAME)/alphabet_cake <input_file.txt | tee output_file.txt
