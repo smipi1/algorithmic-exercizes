@@ -21,6 +21,7 @@ protected:
     }
 };
 
-TEST_F(test_Api, nop)
+TEST_F(test_Api, algorithm_returns_0)
 {
+    ASSERT_EQ(algorithm(), 0);
 }

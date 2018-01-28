@@ -1,5 +1,5 @@
-set(NAME "algorithm")
-set(unittest ${NAME}.unittest) 
+set(DUT "algorithm")
+set(unittest ${DUT}.unittest) 
 
 include_directories(
     ${GTEST_INC_DIR}
@@ -17,7 +17,7 @@ add_unittest(
 target_link_libraries(
     ${unittest}
 
-    lib${NAME}
+    lib${DUT}
 
     -pthread
     -lgtest
