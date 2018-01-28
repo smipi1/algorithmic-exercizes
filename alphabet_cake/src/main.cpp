@@ -20,23 +20,18 @@ void fill(string& row, int start, int end, char letter)
     }
 }
 
-bool isEmptyRow(int firstLetterIdx, const int nrows)
-{
-    return firstLetterIdx == nrows;
-}
-
 void fill_cake(int const nrows, int const ncols, vector<string> &rows)
 {
-    int firstRowIdx = nrows;
-    int prevRowIdx = nrows;
+    int firstRowIdx = -1;
+    int prevRowIdx = -1;
     for(int row = 0; row < nrows; row++) {
-        int firstLetterIdx = nrows;
+        int firstLetterIdx = -1;
         char firstLetter = 0;
         char prevLetter = 0;
         for(int col = 0; col < ncols; col++) {
             auto const letter = rows[row][col];
             if(letter != '?') {
-                if(col < firstLetterIdx) {
+                if(firstLetterIdx == -1) {
                     firstLetter = letter;
                     firstLetterIdx = col;
                 }
@@ -45,13 +40,13 @@ void fill_cake(int const nrows, int const ncols, vector<string> &rows)
                 rows[row][col] = prevLetter;
             }
         }
-        if(isEmptyRow(firstLetterIdx, nrows)) {
-            if(prevRowIdx != nrows) {
+        if(firstLetterIdx == -1) {
+            if(prevRowIdx != -1) {
                 rows[row] = rows[prevRowIdx];
             }
             continue;
         }
-        if(row < firstRowIdx) {
+        if(firstRowIdx == -1) {
             firstRowIdx = row;
         }
         prevRowIdx = row;
@@ -81,7 +76,7 @@ int main(int argc, char *argv[])
             rows.push_back(row);
         }
 
-        cout << "Case #" << n+1 << endl;
+        cout << "Case #" << n+1 << ":" << endl;
 
         fill_cake(nrows, ncols, rows);
 
