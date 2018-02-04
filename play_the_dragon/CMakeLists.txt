@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 2.8.9)
 
-set(NAME example)
+set(NAME play_the_dragon)
 
 project (${NAME})
 
@@ -15,7 +15,7 @@ include_directories(
 )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror -ggdb -std=gnu99")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -ggdb -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -ggdb -std=c++11")
 
 set(CMAKE_C_FLAGS_DEBUG
     "${CMAKE_C_FLAGS_DEBUG} -fprofile-arcs -ftest-coverage -O0 -fPIC"
@@ -47,7 +47,7 @@ add_subdirectory(test)
 add_library(
     lib${NAME}
 
-    src/example.cpp
+    src/play_the_dragon.cpp
 )
 
 install(
